@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Titre -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Gestion des matchs - Coupe d'Afrique"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/editEquipe1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Équipe 1"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+
+    <AutoCompleteTextView
+        android:id="@+id/editEquipe2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Équipe 2"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/editEquipe1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Date -->
+    <EditText
+        android:id="@+id/editDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Date du match"
+        android:focusable="false"
+        android:clickable="true"
+        android:inputType="none"
+        app:layout_constraintTop_toBottomOf="@id/editEquipe2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+
+    <!-- Stade -->
+    <EditText
+        android:id="@+id/editStade"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Stade"
+        app:layout_constraintTop_toBottomOf="@id/editDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Bouton Ajouter -->
+    <Button
+        android:id="@+id/btnAjouter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ajouter"
+        app:layout_constraintTop_toBottomOf="@id/editStade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+    <!-- Bouton Modifier -->
+    <Button
+        android:id="@+id/btnModifier"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Modifier"
+        app:layout_constraintTop_toBottomOf="@id/btnAjouter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Bouton Supprimer -->
+    <Button
+        android:id="@+id/btnSupprimer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Supprimer"
+        app:layout_constraintTop_toBottomOf="@id/btnModifier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Liste des matchs -->
+    <ListView
+        android:id="@+id/listViewMatchs"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/btnSupprimer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
