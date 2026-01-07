@@ -11,7 +11,8 @@
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Gestion des matchs - Coupe d'Afrique"
+        android:text="Gestion des matchs"
+        android:textColor="#E7A80B23"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -29,7 +30,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
-
 
     <AutoCompleteTextView
         android:id="@+id/editEquipe2"
@@ -56,7 +56,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
-
     <!-- Stade -->
     <EditText
         android:id="@+id/editStade"
@@ -69,33 +68,42 @@
         android:layout_marginTop="8dp"/>
 
     <!-- Bouton Ajouter -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAjouter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Ajouter"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="8dp"
+        app:backgroundTint="#E7A80B23"
         app:layout_constraintTop_toBottomOf="@id/editStade"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="12dp"/>
 
     <!-- Bouton Modifier -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnModifier"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Modifier"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="8dp"
+        app:backgroundTint="#E7A80B23"
         app:layout_constraintTop_toBottomOf="@id/btnAjouter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"/>
 
     <!-- Bouton Supprimer -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSupprimer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Supprimer"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="8dp"
+        app:backgroundTint="#E7A80B23"
         app:layout_constraintTop_toBottomOf="@id/btnModifier"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
