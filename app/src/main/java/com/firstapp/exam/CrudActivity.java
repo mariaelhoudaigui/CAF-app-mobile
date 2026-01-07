@@ -1,4 +1,6 @@
 package com.firstapp.exam;
+import android.widget.SimpleAdapter;  // ← ajoute cette ligne
+import java.util.HashMap;               // ← nécessaire pour HashMap
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -201,9 +203,10 @@ public class CrudActivity extends AppCompatActivity {
     // READ
     private void afficherMatchs() {
         ids.clear();
-        matchs.clear();
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        ArrayList<HashMap<String, String>> listData = new ArrayList<>();
 
         Cursor cursor = db.rawQuery(
                 "SELECT id, equipe1, equipe2, date_match, stade FROM match_afrique",
@@ -213,21 +216,29 @@ public class CrudActivity extends AppCompatActivity {
         while (cursor.moveToNext()) {
             ids.add(cursor.getInt(0));
 
-            String ligne =
-                    cursor.getString(1) + " vs " + cursor.getString(2) + "\n" +
-                            "📅 " + cursor.getString(3) + " | 🏟 " + cursor.getString(4);
+            HashMap<String, String> map = new HashMap<>();
+            map.put("eq1", cursor.getString(1));
+            map.put("eq2", cursor.getString(2));
+            map.put("date", "📅 " + cursor.getString(3));
+            map.put("stade", "🏟 " + cursor.getString(4));
 
-            matchs.add(ligne);
+            listData.add(map);
         }
 
         cursor.close();
 
-        adapter = new ArrayAdapter<>(
+        String[] from = {"eq1", "eq2", "date", "stade"};
+        int[] to = {R.id.tvEquipe1, R.id.tvEquipe2, R.id.tvDate, R.id.tvStade};
+
+        SimpleAdapter simpleAdapter = new SimpleAdapter(
                 this,
-                android.R.layout.simple_list_item_1,
-                matchs
+                listData,
+                R.layout.item_match,
+                from,
+                to
         );
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(simpleAdapter);
     }
+
 }

@@ -3,19 +3,19 @@ package com.firstapp.exam;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ListActivity extends AppCompatActivity {
 
     ListView listView;
     DatabaseHelper dbHelper;
-    ArrayList<String> matchs;
-    ArrayAdapter<String> adapter;
+    ArrayList<HashMap<String, String>> matchs; // ← HashMap pour SimpleAdapter
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +41,28 @@ public class ListActivity extends AppCompatActivity {
         );
 
         while (cursor.moveToNext()) {
-            String ligne =
-                    cursor.getString(0) + " vs " + cursor.getString(1) + "\n" +
-                            "📅 " + cursor.getString(2) + " | 🏟 " + cursor.getString(3);
+            HashMap<String, String> map = new HashMap<>();
+            map.put("eq1", cursor.getString(0));
+            map.put("eq2", cursor.getString(1));
+            map.put("date", "📅 " + cursor.getString(2));
+            map.put("stade", "🏟 " + cursor.getString(3));
 
-            matchs.add(ligne);
+            matchs.add(map);
         }
 
         cursor.close();
 
-        adapter = new ArrayAdapter<>(
+        String[] from = {"eq1", "eq2", "date", "stade"};
+        int[] to = {R.id.tvEquipe1, R.id.tvEquipe2, R.id.tvDate, R.id.tvStade};
+
+        SimpleAdapter simpleAdapter = new SimpleAdapter(
                 this,
-                android.R.layout.simple_list_item_1,
-                matchs
+                matchs,
+                R.layout.item_match, // ← ton layout ConstraintLayout
+                from,
+                to
         );
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(simpleAdapter);
     }
 }
